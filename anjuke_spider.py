@@ -43,7 +43,7 @@ def make_headers():
 def scrape_page(url):
     logging.info('scraping %s', url)
     try:
-        response = requests.get(url, headers=make_headers())
+        response = requests.get(url, headers=make_headers(), timeout=10)
         if response.status_code == 200:
             return response.text
         logging.error('get invalid status code %s while scraping %s', response.status_code, url)
